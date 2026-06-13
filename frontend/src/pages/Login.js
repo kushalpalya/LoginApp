@@ -12,7 +12,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("https://loginapp-backend-8847.onrender.com", form);
+    const res = await axios.post("https://loginapp-backend-8847.onrender.com/api/auth/login", form);
     localStorage.setItem("token", res.data.token);
     alert("Login Success");
     navigate("/dashboard");

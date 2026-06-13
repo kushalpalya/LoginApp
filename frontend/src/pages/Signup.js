@@ -10,7 +10,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("https://loginapp-backend-8847.onrender.com", form);
+    const res = await axios.post("https://loginapp-backend-8847.onrender.com/api/auth/signup", form);
     alert(res.data.message);
   };
 
