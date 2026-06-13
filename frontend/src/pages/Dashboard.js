@@ -10,7 +10,7 @@ function Dashboard() {
     skills: 0
   });
   const navigate = useNavigate();
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios.get("https://loginapp-backend-8847.onrender.com/api/auth/profile", {
