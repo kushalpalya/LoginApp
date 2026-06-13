@@ -26,7 +26,7 @@ function Dashboard() {
       .then(res => setStats(prev => ({ ...prev, departments: res.data.length })));
     axios.get("https://loginapp-backend-8847.onrender.com/api/skills")
       .then(res => setStats(prev => ({ ...prev, skills: res.data.length })));
-  }, []);
+  }, [navigate]); // eslint-disable-line
 
   const handleLogout = () => {
     localStorage.removeItem("token");
