@@ -5,7 +5,7 @@ function EmployeeList() {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/employees")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/employees")
       .then(res => setEmployees(res.data))
       .catch(err => console.log(err));
   }, []);

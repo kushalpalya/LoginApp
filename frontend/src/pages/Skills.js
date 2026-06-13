@@ -10,13 +10,13 @@ function Skills() {
   }, []);
 
   const fetchSkills = () => {
-    axios.get("http://localhost:5000/api/skills")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/skills")
       .then(res => setSkills(res.data));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/api/skills", {
+    await axios.post("https://loginapp-backend-8847.onrender.com/api/skills", {
       skill_name: name
     });
     alert("Skill Added!");

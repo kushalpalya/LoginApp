@@ -13,18 +13,18 @@ function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:5000/api/auth/profile", {
+    axios.get("https://loginapp-backend-8847.onrender.com/api/auth/profile", {
       headers: { Authorization: token }
     })
     .then(res => setUser(res.data))
     .catch(() => navigate("/"));
 
     // Get stats
-    axios.get("http://localhost:5000/api/employees")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/employees")
       .then(res => setStats(prev => ({ ...prev, employees: res.data.length })));
-    axios.get("http://localhost:5000/api/departments")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/departments")
       .then(res => setStats(prev => ({ ...prev, departments: res.data.length })));
-    axios.get("http://localhost:5000/api/skills")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/skills")
       .then(res => setStats(prev => ({ ...prev, skills: res.data.length })));
   }, []);
 

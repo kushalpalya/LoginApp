@@ -10,13 +10,13 @@ function Departments() {
   }, []);
 
   const fetchDepartments = () => {
-    axios.get("http://localhost:5000/api/departments")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/departments")
       .then(res => setDepartments(res.data));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/api/departments", {
+    await axios.post("https://loginapp-backend-8847.onrender.com/api/departments", {
       department_name: name
     });
     alert("Department Added!");

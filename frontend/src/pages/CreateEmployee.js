@@ -16,7 +16,7 @@ function CreateEmployee() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/departments")
+    axios.get("https://loginapp-backend-8847.onrender.com/api/departments")
       .then(res => setDepartments(res.data));
   }, []);
 
@@ -28,7 +28,7 @@ function CreateEmployee() {
     e.preventDefault();
     try {
       // Step 1: Create employee
-      const res = await axios.post("http://localhost:5000/api/employees", form);
+      const res = await axios.post("https://loginapp-backend-8847.onrender.com/api/employees", form);
       const employeeId = res.data.id;
 
       // Step 2: Upload images if any
@@ -38,7 +38,7 @@ function CreateEmployee() {
           formData.append("images", img);
         }
         await axios.post(
-          `http://localhost:5000/api/employees/upload/${employeeId}`,
+          `https://loginapp-backend-8847.onrender.com/api/employees/upload/${employeeId}`,
           formData
         );
       }
