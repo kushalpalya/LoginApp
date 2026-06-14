@@ -6,6 +6,8 @@ import EmployeeList from "./pages/EmployeeList";
 import CreateEmployee from "./pages/CreateEmployee";
 import Departments from "./pages/Departments";
 import Skills from "./pages/Skills";
+import ApplyLeave from "./pages/ApplyLeave";
+import LeaveList from "./pages/LeaveList";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
@@ -28,6 +30,12 @@ function App() {
         } />
         <Route path="/skills" element={
           <ProtectedRoute><Skills /></ProtectedRoute>
+        } />
+        <Route path="/apply-leave" element={
+          <ProtectedRoute><ApplyLeave /></ProtectedRoute>
+        } />
+        <Route path="/my-leaves" element={
+          <ProtectedRoute><LeaveList /></ProtectedRoute>
         } />
       </Routes>
     </BrowserRouter>

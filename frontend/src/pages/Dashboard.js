@@ -7,10 +7,11 @@ function Dashboard() {
   const [stats, setStats] = useState({
     employees: 0,
     departments: 0,
-    skills: 0
+    skills: 0,
+    leaves: 0
   });
   const navigate = useNavigate();
-// eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios.get("https://loginapp-backend-8847.onrender.com/api/auth/profile", {
@@ -19,14 +20,15 @@ function Dashboard() {
     .then(res => setUser(res.data))
     .catch(() => navigate("/"));
 
-    // Get stats
     axios.get("https://loginapp-backend-8847.onrender.com/api/employees")
       .then(res => setStats(prev => ({ ...prev, employees: res.data.length })));
     axios.get("https://loginapp-backend-8847.onrender.com/api/departments")
       .then(res => setStats(prev => ({ ...prev, departments: res.data.length })));
     axios.get("https://loginapp-backend-8847.onrender.com/api/skills")
       .then(res => setStats(prev => ({ ...prev, skills: res.data.length })));
-  }, [navigate]); // eslint-disable-line
+    axios.get("https://loginapp-backend-8847.onrender.com/api/leaves/types")
+      .then(res => setStats(prev => ({ ...prev, leaves: res.data.length })));
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -38,7 +40,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Welcome, {user.name}! 👋</h1>
-      <p>Email: {user.email}</p>
+      <p>Email: {user.email} | Role: {user.role}</p>
 
       <hr/>
 
@@ -49,11 +51,13 @@ function Dashboard() {
         <button>🏢 Departments: {stats.departments}</button>
         &nbsp;
         <button>🎯 Skills: {stats.skills}</button>
+        &nbsp;
+        <button>📅 Leave Types: {stats.leaves}</button>
       </div>
 
       <hr/>
 
-      <h3>Navigation</h3>
+      <h3>👥 Employee Management</h3>
       <button onClick={() => navigate("/employees")}>👥 Employee List</button>
       &nbsp;
       <button onClick={() => navigate("/employees/create")}>➕ Create Employee</button>
@@ -61,7 +65,16 @@ function Dashboard() {
       <button onClick={() => navigate("/departments")}>🏢 Departments</button>
       &nbsp;
       <button onClick={() => navigate("/skills")}>🎯 Skills</button>
+
+      <hr/>
+
+      <h3>📅 Leave Management</h3>
+      <button onClick={() => navigate("/apply-leave")}>📝 Apply Leave</button>
       &nbsp;
+      <button onClick={() => navigate("/my-leaves")}>📋 My Leaves</button>
+
+      <hr/>
+
       <button onClick={handleLogout}>🚪 Logout</button>
     </div>
   );

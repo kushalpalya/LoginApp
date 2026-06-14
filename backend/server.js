@@ -19,6 +19,8 @@ app.use("/api/departments", departmentRoutes);
 app.use("/api/employees", employeeRoutes);
 const skillRoutes = require("./routes/skills");
 app.use("/api/skills", skillRoutes);
+const leaveRoutes = require("./routes/leaves");
+app.use("/api/leaves", leaveRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on ${process.env.PORT}`);
