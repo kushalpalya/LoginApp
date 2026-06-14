@@ -9,6 +9,7 @@ import Skills from "./pages/Skills";
 import ApplyLeave from "./pages/ApplyLeave";
 import LeaveList from "./pages/LeaveList";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import ManageLeaves from "./pages/ManageLeaves";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
         } />
         <Route path="/my-leaves" element={
           <ProtectedRoute><LeaveList /></ProtectedRoute>
+        } />
+        <Route path="/manage-leaves" element={
+         <ProtectedRoute><ManageLeaves /></ProtectedRoute>
         } />
       </Routes>
     </BrowserRouter>

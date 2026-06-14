@@ -72,6 +72,8 @@ function Dashboard() {
       <button onClick={() => navigate("/apply-leave")}>📝 Apply Leave</button>
       &nbsp;
       <button onClick={() => navigate("/my-leaves")}>📋 My Leaves</button>
+      &nbsp;
+      <button onClick={() => navigate("/manage-leaves")}>⚙️ Manage Leaves</button>
 
       <hr/>
 
